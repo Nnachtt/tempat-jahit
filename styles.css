@@ -1,0 +1,167 @@
+/* ==========================================================================
+   Delta Jeans - Penjahit Custom & Vermak
+   Custom Stylesheet & Denim Theme Enhancements
+   ========================================================================== */
+
+:root {
+  --denim-bg: #0b1120;
+  --denim-card: #131c31;
+  --denim-card-hover: #1a2642;
+  --denim-border: #1e293b;
+  --denim-indigo: #1d4ed8;
+  --denim-indigo-light: #3b82f6;
+  --stitch-gold: #f59e0b;
+  --stitch-copper: #d97706;
+  --leather-brown: #78350f;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+/* Custom Stitch Effect Borders */
+.stitch-border {
+  border: 2px dashed rgba(245, 158, 11, 0.4);
+  position: relative;
+}
+
+.stitch-border-bottom {
+  border-bottom: 2px dashed rgba(245, 158, 11, 0.4);
+}
+
+.stitch-border-top {
+  border-top: 2px dashed rgba(245, 158, 11, 0.4);
+}
+
+/* Leather Patch Badge */
+.leather-patch {
+  background: linear-gradient(135deg, #78350f 0%, #92400e 50%, #5e2808 100%);
+  border: 1.5px dashed #d97706;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.4);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);
+  position: relative;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Denim Texture Background Overlay */
+.denim-pattern {
+  background-color: #0b1120;
+  background-image: 
+    radial-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+    radial-gradient(rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Glow Effects */
+.glow-blue {
+  box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3);
+}
+
+.glow-gold {
+  box-shadow: 0 0 30px -8px rgba(245, 158, 11, 0.35);
+}
+
+/* Before / After Slider */
+.ba-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ba-image-before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ba-slider-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #f59e0b;
+  cursor: ew-resize;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
+}
+
+.ba-slider-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: #f59e0b;
+  color: #0b1120;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  font-weight: bold;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1120;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+  border: 1px solid #334155;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Floating WhatsApp Pulse */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+}
+
+.wa-floating-btn {
+  animation: pulse-subtle 3s infinite;
+}
+
+/* Smooth Accordion */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.active .faq-content {
+  max-height: 500px;
+}
+
+.faq-item.active .faq-chevron {
+  transform: rotate(180deg);
+}
+
+/* Custom Range Input */
+input[type=range] {
+  accent-color: #f59e0b;
+}
+
+/* Denim Canvas Preview */
+#denimVisualizer {
+  transition: all 0.4s ease;
+}
