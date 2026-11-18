@@ -261,22 +261,30 @@ function initBeforeAfterSlider() {
   function move(e) {
     if (!isDragging) return;
     const rect = container.getBoundingClientRect();
-    let x = (e.pageX || (e.touches && e.touches[0].pageX)) - rect.left;
+    const clientX = (e.touches && e.touches[0] ? e.touches[0].clientX : e.clientX) || (e.pageX || (e.touches && e.touches[0].pageX) || 0);
+    let x = clientX - rect.left;
     x = Math.max(0, Math.min(x, rect.width));
-    const percent = (x / rect.width) * 100;
+    const percent = Math.min(100, Math.max(0, (x / rect.width) * 100));
 
-    beforeImg.style.width = `${percent}%`;
+    beforeImg.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+    beforeImg.style.webkitClipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
     handle.style.left = `${percent}%`;
   }
 
-  container.addEventListener('mousedown', () => isDragging = true);
+  container.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    move(e);
+  });
   window.addEventListener('mouseup', () => isDragging = false);
-  container.addEventListener('mousemove', move);
+  window.addEventListener('mousemove', move);
 
   // Touch Support
-  container.addEventListener('touchstart', () => isDragging = true);
+  container.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    move(e);
+  }, { passive: true });
   window.addEventListener('touchend', () => isDragging = false);
-  container.addEventListener('touchmove', move);
+  window.addEventListener('touchmove', move, { passive: true });
 }
 
 /* ==========================================================================
