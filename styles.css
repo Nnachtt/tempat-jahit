@@ -149,11 +149,15 @@
 .faq-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, visibility 0.35s;
 }
 
 .faq-item.active .faq-content {
   max-height: 500px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .faq-item.active .faq-chevron {
