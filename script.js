@@ -349,17 +349,23 @@ function initFaqAccordion() {
 
   faqItems.forEach(item => {
     const header = item.querySelector('.faq-header');
-    if (!header) return;
+    const content = item.querySelector('.faq-content');
+    if (!header || !content) return;
 
     header.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
       
-      // Close all others
-      faqItems.forEach(i => i.classList.remove('active'));
+      // Close all items cleanly
+      faqItems.forEach(i => {
+        i.classList.remove('active');
+        const c = i.querySelector('.faq-content');
+        if (c) c.style.maxHeight = null;
+      });
 
-      // If it wasn't active, open it
+      // If it wasn't active, open this one
       if (!isActive) {
         item.classList.add('active');
+        content.style.maxHeight = content.scrollHeight + 'px';
       }
     });
   });
