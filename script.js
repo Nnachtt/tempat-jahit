@@ -4,6 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   initNavbar();
   initPriceCalculator();
   initDenimCustomizer();
@@ -15,6 +16,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Default WhatsApp Number for Delta Jeans (User can easily adjust)
 const DELTA_WA_NUMBER = "6281234567890"; 
+
+/* ==========================================================================
+   0. Theme Toggle (Light Mode / Dark Mode)
+   ========================================================================== */
+function initThemeToggle() {
+  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  
+  // Apply saved theme preference or default to bright light mode
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  themeToggleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleTheme();
+    });
+  });
+} 
 
 /* ==========================================================================
    1. Navigation & Mobile Drawer
