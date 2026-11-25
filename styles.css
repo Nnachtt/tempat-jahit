@@ -174,16 +174,11 @@ input[type=range] {
   transition: all 0.4s ease;
 }
 
-/* Mobile Menu Drawer Animation */
-#mobileMenu {
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, transform 0.25s ease;
+/* Mobile Sidebar Drawer Animation */
+#mobileBackdrop {
+  transition: opacity 0.28s ease;
 }
 
-#mobileMenu.mobile-menu-open {
-  max-height: calc(100vh - 4.5rem);
-  opacity: 1;
-  transform: translateY(0);
+#mobileMenu {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
