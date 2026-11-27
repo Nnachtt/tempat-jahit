@@ -342,6 +342,9 @@ html:not(.dark) .bg-slate-900\/60,
 html:not(.dark) .bg-slate-900\/70,
 html:not(.dark) .bg-slate-900\/80,
 html:not(.dark) .bg-slate-900\/90,
+html:not(.dark) .bg-denim-900\/80,
+html:not(.dark) .bg-denim-900\/90,
+html:not(.dark) .bg-slate-950\/60,
 html:not(.dark) .bg-slate-950,
 html:not(.dark) .bg-slate-950\/70,
 html:not(.dark) .bg-slate-950\/80,
@@ -587,3 +590,15 @@ textarea:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Kotak ikon (Lokasi) yang tadinya tetap gelap di tema terang */
+html:not(.dark) div.bg-slate-800 {
+  background-color: #e2e8f0 !important;
+}
+
+/* Warna teks yang sebelumnya belum dipetakan untuk tema terang */
+html:not(.dark) .text-amber-500 { color: #b45309 !important; }
+html:not(.dark) .text-purple-400 { color: #7e22ce !important; }
+html:not(.dark) .text-red-500 { color: #dc2626 !important; }
+html:not(.dark) .border-slate-600 { border-color: #cbd5e1 !important; }
+html:not(.dark) .on-dark .text-amber-500 { color: #f59e0b !important; }
