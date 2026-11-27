@@ -275,16 +275,6 @@ html:not(.dark) #navbar .nav-link:hover {
   color: #d97706 !important;
 }
 
-html:not(.dark) #navbar a[href="#kalkulator"].bg-slate-900 {
-  background-color: #f1f5f9 !important;
-  color: #334155 !important;
-  border-color: #cbd5e1 !important;
-}
-html:not(.dark) #navbar a[href="#kalkulator"].bg-slate-900:hover {
-  background-color: #e2e8f0 !important;
-  color: #0f172a !important;
-}
-
 html:not(.dark) #mobileMenuBtn {
   background-color: #f1f5f9 !important;
   border-color: #cbd5e1 !important;
@@ -398,20 +388,20 @@ html:not(.dark) .text-slate-300 {
 }
 
 html:not(.dark) .text-slate-400 {
-  color: #64748b !important;
+  color: #475569 !important; /* 7,5:1 di putih */
 }
 
 html:not(.dark) .text-slate-500 {
-  color: #94a3b8 !important;
+  color: #586579 !important; /* ≥4,5:1 di semua latar terang */
 }
 
 /* Primary Amber / Golden Text */
 html:not(.dark) .text-amber-400 {
-  color: #d97706 !important;
+  color: #b45309 !important; /* 5,0:1 di putih */
 }
 
 html:not(.dark) .text-amber-300 {
-  color: #b45309 !important;
+  color: #92400e !important;
 }
 
 /* Badges with light translucent background */
@@ -483,22 +473,22 @@ html:not(.dark) label.bg-slate-900\/80:hover {
 /* Denim Studio Selector Buttons */
 html:not(.dark) .custom-cut-opt,
 html:not(.dark) .custom-fabric-opt,
-html:not(.dark) .custom-thread-opt,
-html:not(.dark) .custom-hardware-opt {
+html:not(.dark) .custom-stitch-opt,
+html:not(.dark) .custom-hw-opt {
   background-color: #ffffff !important;
   border-color: #cbd5e1 !important;
   color: #1e293b !important;
 }
 html:not(.dark) .custom-cut-opt:hover,
 html:not(.dark) .custom-fabric-opt:hover,
-html:not(.dark) .custom-thread-opt:hover,
-html:not(.dark) .custom-hardware-opt:hover {
+html:not(.dark) .custom-stitch-opt:hover,
+html:not(.dark) .custom-hw-opt:hover {
   border-color: #f59e0b !important;
 }
 html:not(.dark) .custom-cut-opt.ring-2,
 html:not(.dark) .custom-fabric-opt.ring-2,
-html:not(.dark) .custom-thread-opt.ring-2,
-html:not(.dark) .custom-hardware-opt.ring-2 {
+html:not(.dark) .custom-stitch-opt.ring-2,
+html:not(.dark) .custom-hw-opt.ring-2 {
   background-color: #fffbeb !important;
   border-color: #f59e0b !important;
 }
@@ -535,4 +525,65 @@ html:not(.dark) ::-webkit-scrollbar-thumb {
 }
 html:not(.dark) ::-webkit-scrollbar-thumb:hover {
   background: #f59e0b;
+}
+
+/* ==========================================================================
+   Aksesibilitas & perbaikan tema (ditambahkan)
+   ========================================================================== */
+
+/* Header sticky: anchor tidak tertutup */
+html {
+  scroll-padding-top: 5rem;
+}
+
+/* Warna aksen lain di tema terang (kontras minimal 4,5:1) */
+html:not(.dark) .text-emerald-300,
+html:not(.dark) .text-emerald-400 { color: #047857 !important; }
+html:not(.dark) .text-rose-300,
+html:not(.dark) .text-rose-400 { color: #be123c !important; }
+html:not(.dark) .text-blue-400 { color: #1d4ed8 !important; }
+
+/* Panel yang SELALU gelap (kartu Sebelum/Sesudah, header pratinjau, logo, siluet celana):
+   kembalikan warna teks terang agar tidak ikut ditimpa aturan tema terang. */
+html:not(.dark) .on-dark .text-white,
+html:not(.dark) .on-dark h3,
+html:not(.dark) .on-dark h4 { color: #ffffff !important; }
+html:not(.dark) .on-dark .text-slate-300 { color: #cbd5e1 !important; }
+html:not(.dark) .on-dark .text-slate-400,
+html:not(.dark) .on-dark .text-slate-500 { color: #94a3b8 !important; }
+html:not(.dark) .on-dark .text-amber-400 { color: #fbbf24 !important; }
+html:not(.dark) .on-dark .text-amber-300 { color: #fcd34d !important; }
+html:not(.dark) .on-dark .text-emerald-300,
+html:not(.dark) .on-dark .text-emerald-400 { color: #6ee7b7 !important; }
+html:not(.dark) .on-dark .text-rose-300,
+html:not(.dark) .on-dark .text-rose-400 { color: #fda4af !important; }
+
+/* Fokus keyboard yang terlihat */
+a:focus-visible,
+button:focus-visible,
+[role="slider"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #f59e0b !important;
+  outline-offset: 2px;
+}
+
+.ba-slider-handle:focus-visible {
+  outline-offset: 4px;
+}
+
+/* Hormati preferensi "kurangi gerakan" */
+@media (prefers-reduced-motion: reduce) {
+  .wa-floating-btn,
+  .animate-pulse,
+  .animate-ping {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
 }
